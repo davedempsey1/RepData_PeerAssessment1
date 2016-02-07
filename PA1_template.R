@@ -17,8 +17,8 @@ colnames(sumTable)<- c("Date", "Steps")
 
 hist(sumTable$Steps, breaks=5, xlab="Steps", main = "Total Steps per Day")
 
-mean(sumTable$Steps)
-median(sumTable$Steps)
+mean(sumTable$Steps) #10766.19
+median(sumTable$Steps) #10765
 
 intervalTable <- ddply(clean, .(interval), summarize, Avg = mean(steps))
 
@@ -45,9 +45,9 @@ mergeData <- rbind(clean, newdata2)
 sumTable2 <- aggregate(mergeData$steps ~ mergeData$date, FUN=sum, )
 colnames(sumTable2)<- c("Date", "Steps")
 
-mean(sumTable2$Steps)
+mean(sumTable2$Steps) #10821.21
 
-median(sumTable2$Steps)
+median(sumTable2$Steps) #11015
 
 hist(sumTable2$Steps, breaks=5, xlab="Steps", main = "Total Steps per Day with NAs Fixed", col="Black")
 hist(sumTable$Steps, breaks=5, xlab="Steps", main = "Total Steps per Day with NAs Fixed", col="Grey", add=T)
